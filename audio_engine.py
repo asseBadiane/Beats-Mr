@@ -1,5 +1,5 @@
 from audiostream import get_output
-
+from audio_source_one_shot import AudioSourceOneShot
 
 
 class AudioEngine:
@@ -15,3 +15,6 @@ class AudioEngine:
 
         
     
+    def play_sound(self, wav_samples):
+        self.audio_source_one_shot = AudioSourceOneShot(self.output_stream, wav_samples)
+        self.audio_source_one_shot.start()
