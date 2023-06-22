@@ -24,3 +24,10 @@ class SoundKitService:
 
     def get_nb_tracks(self):
         return self.soundkit.get_nb_sound()
+
+    def get_sound_index(self, index):
+        if index >= len(self.soundkit.sounds):
+            return None
+
+        return self.soundkit.sounds[index]
+
