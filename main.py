@@ -18,12 +18,12 @@ class MainWidget(RelativeLayout):
         super(MainWidget, self).__init__(**kwargs)
         self.sound_kit_service = SoundKitService()
 
-        kik_sound = self.sound_kit_service.get_sound_index(0)
+        # kik_sound = self.sound_kit_service.get_sound_index(0)
 
         self.audio_engine = AudioEngine()
         # self.audio_engine.play_sound(kik_sound.samples)
 
-        self.audio_engine.create_track(kik_sound.samples, 120)
+        # self.audio_engine.create_track(kik_sound.samples, 120)
 
 
     def on_parent(self, widget, parent):

@@ -20,7 +20,7 @@ class AudioSourceTrack(ThreadSource):
         self.last_sound_sample_start_index = 0
 
     def set_steps(self, steps):
-        if not len(steps) == self.steps:
+        if not len(steps) == len(self.steps):
             self.current_steps_index = 0
         self.steps = steps
 
@@ -50,11 +50,10 @@ class AudioSourceTrack(ThreadSource):
                     if self.buf[i] == 0:
                         self.last_sound_sample_start_index = self.current_sample_index
                 else:
-                    index = self.last_sound_sample_start_index - self.current_sample_index
+                    index =  self.current_sample_index - self.last_sound_sample_start_index
                     if index < self.nb_wav_samples:
                         self.buf[i] = self.wav_samples[index]
                     else:
-
                         self.buf[i] = 0
             else:
                 self.buf[i] = 0
