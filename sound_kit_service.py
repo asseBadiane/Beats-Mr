@@ -9,7 +9,7 @@ class Sound:
         self.filename = filename
         self.displayname = displayname
         self.load_sound()
-
+ 
 
     def load_sound(self):
         wave_file = wave.open(self.filename, mode='rb')
