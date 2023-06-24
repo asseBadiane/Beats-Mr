@@ -30,7 +30,7 @@ class MainWidget(RelativeLayout):
         for i in range(0, self.sound_kit_service.get_nb_tracks()):
             sound = self.sound_kit_service.get_sound_index(i)
             self.tracks_layout.add_widget(TrackWidget(sound, self.audio_engine))
-
+        
 
 class MrBeatsApp(App):
     pass

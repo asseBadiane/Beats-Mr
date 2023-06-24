@@ -29,7 +29,6 @@ class TrackWidget(BoxLayout):
             self.button_step = TrackStepButton()
             self.button_step.bind(state=self.on_step_button_state)
             self.button_steps.append(self.button_step)
-
             self.add_widget(self.button_step)
 
     def on_play_sound_button_press(self):

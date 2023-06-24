@@ -17,6 +17,7 @@ class Sound:
         frames = wave_file.readframes(self.nb_samples)
         self.samples = array("h", frames)
 
+
 class Soundkit:
     sounds = ()
 
