@@ -11,7 +11,7 @@ class TrackSoundButton(Button):
 
 class TrackWidget(BoxLayout):
 
-    def __init__(self, sound, audio_engine, nb_steps_track, **kwargs):
+    def __init__(self, sound, audio_engine, nb_steps, track_source, **kwargs):
         super(TrackWidget, self).__init__(**kwargs)
 
         self.tracks_sound = TrackSoundButton()
@@ -23,11 +23,12 @@ class TrackWidget(BoxLayout):
         self.sound = sound
         self.button_steps = []
 
-        self.nb_steps_track = nb_steps_track
+        self.nb_steps = nb_steps
+        self.tracks_source = track_source
 
         # self.source_tracks = audio_engine.create_track(sound.samples, 120)
 
-        for i in range(0, self.nb_steps_track):
+        for i in range(0, self.nb_steps):
             self.button_step = TrackStepButton()
             self.button_step.bind(state=self.on_step_button_state)
             self.button_steps.append(self.button_step)
@@ -41,10 +42,11 @@ class TrackWidget(BoxLayout):
     def on_step_button_state(self, widget, value):
         
         steps = []
-        for i in range(0, self.nb_steps_track):
+        for i in range(0, self.nb_steps):
             if self.button_steps[i].state == "down":
                 steps.append(1)
             else:
                 steps.append(0)
 
-        # self.source_tracks.set_steps(steps)
+       
+        self.tracks_source.set_steps( steps)
