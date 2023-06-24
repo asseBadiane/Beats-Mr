@@ -23,6 +23,15 @@ class Soundkit:
 
     def get_nb_sound(self):
         return  len(self.sounds)
+    
+
+    def get_all_samples(self):
+        all_samples = []
+        for i in range(0, len(self.sounds)): 
+            all_samples.append(self.sounds[i].samples)
+
+        return all_samples
+
 
 class SoundKit1(Soundkit):
     sounds = (
