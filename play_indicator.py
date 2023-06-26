@@ -41,6 +41,8 @@ class PlayIndicatorWidget(BoxLayout):
 
 
     def current_step_index(self, index):
+        if index >= len(self.buttons):
+            return
         for i in range(0, len(self.buttons)):
             button = self.buttons[i]
             if i == index:
