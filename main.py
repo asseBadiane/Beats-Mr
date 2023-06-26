@@ -34,6 +34,7 @@ class MainWidget(RelativeLayout):
 
     def on_parent(self, widget, parent):
         self.play_indicator_widget.set_nb_steps(NB_STEPS_TRACKS)
+        self.play_indicator_widget.current_step_index(5)
         for i in range(0, self.sound_kit_service.get_nb_tracks()):
             sound = self.sound_kit_service.get_sound_index(i)
             self.tracks_layout.add_widget(TrackWidget(sound, self.audio_engine, NB_STEPS_TRACKS, self.audio_mixer.tracks[i], self.TRACK_STEP_LEFT_ALIGN))
