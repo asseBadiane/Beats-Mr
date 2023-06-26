@@ -20,6 +20,8 @@ class MainWidget(RelativeLayout):
     play_indicator_widget = ObjectProperty()
     TRACK_STEP_LEFT_ALIGN = NumericProperty(dp(100))
     step_index = 0
+    bpm = NumericProperty(120)
+
 
     def __init__(self, **kwargs):
         super(MainWidget, self).__init__(**kwargs)
@@ -57,6 +59,15 @@ class MainWidget(RelativeLayout):
 
     def on_stop_button_pressed(self):
         self.audio_mixer.audio_stop()
+     
+
+    def on_bpm(self, widget, value):
+        if value <= 80:
+            self.bpm = 80
+            return
+        if value > 160:
+            self.bpm = 160
+
 
 class MrBeatsApp(App):
     pass
