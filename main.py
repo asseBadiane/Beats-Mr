@@ -32,7 +32,7 @@ class MainWidget(RelativeLayout):
 
         # self.audio_engine.create_track(kik_sound.samples, 120)
         self.audio_mixer = self.audio_engine.create_mixer(self.sound_kit_service.soundkit.get_all_samples(), 120, NB_STEPS_TRACKS, self.on_mixer_current_step_changed)
-
+    
 
     def on_parent(self, widget, parent):
         self.play_indicator_widget.set_nb_steps(NB_STEPS_TRACKS)
@@ -51,6 +51,12 @@ class MainWidget(RelativeLayout):
     def update_play_indicator_cbk(self, dt):
         if self.play_indicator_widget is not None:
             self.play_indicator_widget.current_step_index(self.step_index)
+
+    def on_play_button_pressed(self):
+        self.audio_mixer.audio_play()
+
+    def on_stop_button_pressed(self):
+        self.audio_mixer.audio_stop()
 
 class MrBeatsApp(App):
     pass
