@@ -52,7 +52,7 @@ class AudioSourceTrack(ThreadSource):
     def get_bytes_array(self):
 
         for i in range(0, self.steps_nb_samples):
-            if len(self.steps) > 0 and not self.is_no_steps_activated():
+            if len(self.steps) > 0 and not self.no_steps_activated():
                 if self.steps[self.current_steps_index] == 1 and i < self.nb_wav_samples:
             
                     self.buf[i] = self.wav_samples[i]
@@ -64,8 +64,6 @@ class AudioSourceTrack(ThreadSource):
                         self.buf[i] = self.wav_samples[index]
                     else:
                         self.buf[i] = 0
-            # else:
-            #     self.buf[i] = 0
             else :
                 self.buf[i] = 0
             

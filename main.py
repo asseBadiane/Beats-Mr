@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, NumericProperty
+from kivy.metrics import dp
 from kivy.lang import Builder
 
 from track import TrackWidget
@@ -8,11 +9,15 @@ from sound_kit_service import  SoundKitService
 from audio_engine import AudioEngine
 
 Builder.load_file("track.kv")
+Builder.load_file("play_indicator.kv")
+
 NB_STEPS_TRACKS = 16
 
 #NB_TRACKS = 4
 class MainWidget(RelativeLayout):
     tracks_layout = ObjectProperty()
+    play_indicator_widget = ObjectProperty()
+    TRACK_STEP_LEFT_ALIGN = NumericProperty(dp(100))
 
     def __init__(self, **kwargs):
         super(MainWidget, self).__init__(**kwargs)
@@ -28,9 +33,10 @@ class MainWidget(RelativeLayout):
 
 
     def on_parent(self, widget, parent):
+        self.play_indicator_widget.set_nb_steps(NB_STEPS_TRACKS)
         for i in range(0, self.sound_kit_service.get_nb_tracks()):
             sound = self.sound_kit_service.get_sound_index(i)
-            self.tracks_layout.add_widget(TrackWidget(sound, self.audio_engine, NB_STEPS_TRACKS, self.audio_mixer.tracks[i]))
+            self.tracks_layout.add_widget(TrackWidget(sound, self.audio_engine, NB_STEPS_TRACKS, self.audio_mixer.tracks[i], self.TRACK_STEP_LEFT_ALIGN))
         
 
 class MrBeatsApp(App):

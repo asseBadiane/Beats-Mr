@@ -11,11 +11,12 @@ class TrackSoundButton(Button):
 
 class TrackWidget(BoxLayout):
 
-    def __init__(self, sound, audio_engine, nb_steps, track_source, **kwargs):
+    def __init__(self, sound, audio_engine, nb_steps, track_source, steps_left_align, **kwargs):
         super(TrackWidget, self).__init__(**kwargs)
 
         self.tracks_sound = TrackSoundButton()
         self.tracks_sound.text = sound.displayname
+        self.tracks_sound.width = steps_left_align
         self.tracks_sound.on_press = self.on_play_sound_button_press
         self.add_widget(self.tracks_sound)
 
