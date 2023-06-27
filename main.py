@@ -13,6 +13,8 @@ Builder.load_file("track.kv")
 Builder.load_file("play_indicator.kv")
 
 NB_STEPS_TRACKS = 16
+MIN_BPM = 80
+MAX_BPM = 160
 
 #NB_TRACKS = 4
 class MainWidget(RelativeLayout):
@@ -33,7 +35,7 @@ class MainWidget(RelativeLayout):
         # self.audio_engine.play_sound(kik_sound.samples)
 
         # self.audio_engine.create_track(kik_sound.samples, 120)
-        self.audio_mixer = self.audio_engine.create_mixer(self.sound_kit_service.soundkit.get_all_samples(), 120, NB_STEPS_TRACKS, self.on_mixer_current_step_changed)
+        self.audio_mixer = self.audio_engine.create_mixer(self.sound_kit_service.soundkit.get_all_samples(), 120, NB_STEPS_TRACKS, self.on_mixer_current_step_changed, MIN_BPM)
     
 
     def on_parent(self, widget, parent):
@@ -47,26 +49,29 @@ class MainWidget(RelativeLayout):
     def on_mixer_current_step_changed(self, step_index):
         # print(f"on_mixer_current_step_changed {step_index}")
         self.step_index = step_index
-        
         Clock.schedule_once(self.update_play_indicator_cbk, 0)
 
     def update_play_indicator_cbk(self, dt):
         if self.play_indicator_widget is not None:
             self.play_indicator_widget.current_step_index(self.step_index)
 
+
     def on_play_button_pressed(self):
         self.audio_mixer.audio_play()
+
 
     def on_stop_button_pressed(self):
         self.audio_mixer.audio_stop()
      
 
     def on_bpm(self, widget, value):
-        if value <= 80:
-            self.bpm = 80
+        if value <= MIN_BPM:
+            self.bpm = MIN_BPM
             return
-        if value > 160:
-            self.bpm = 160
+        if value > MAX_BPM:
+            self.bpm = MAX_BPM
+
+        self.audio_mixer.set_bpm(self.bpm)
 
 
 class MrBeatsApp(App):
