@@ -35,7 +35,7 @@ class MainWidget(RelativeLayout):
         # self.audio_engine.play_sound(kik_sound.samples)
 
         # self.audio_engine.create_track(kik_sound.samples, 120)
-        self.audio_mixer = self.audio_engine.create_mixer(self.sound_kit_service.soundkit.get_all_samples(), 120, NB_STEPS_TRACKS, self.on_mixer_current_step_changed, MIN_BPM)
+        self.audio_mixer = self.audio_engine.create_mixer(self.sound_kit_service.soundkit.get_all_samples(), self.bpm, NB_STEPS_TRACKS, self.on_mixer_current_step_changed, MIN_BPM)
     
 
     def on_parent(self, widget, parent):
