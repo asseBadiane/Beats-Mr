@@ -66,9 +66,45 @@ class SoundKit2(Soundkit):
         
     )
 
+class SoundKit3(Soundkit):
+    sounds = (
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+        Sound("sounds/kit1/kick.wav", "KICK"),
+    )
+
 
 class SoundKitService:
-    soundkit = SoundKit2()
+    soundkit = SoundKit3()
 
     def get_nb_tracks(self):
         return self.soundkit.get_nb_sound()

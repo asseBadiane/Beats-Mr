@@ -70,7 +70,7 @@ class AudioSourceTrack(ThreadSource):
             result_buf = self.silence[0:self.steps_nb_samples]
         elif self.steps[self.current_steps_index] == 1 :
             # 2 step activé et le son a plus de sample que 1 step
-            # self.last_sound_sample_start_index = self.current_sample_index
+            self.last_sound_sample_start_index = self.current_sample_index
             if self.nb_wav_samples  >= self.steps_nb_samples:
                 result_buf = self.wav_samples[0:self.steps_nb_samples]
             else:

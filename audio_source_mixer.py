@@ -2,6 +2,18 @@ from audiostream.sources.thread import ThreadSource
 from array import array
 from audio_source_track import AudioSourceTrack
 
+MAX_16_BYTES = 32767
+MIN_16_BITS = -32768
+
+def sum_16_bytes(n):
+   
+    s = sum(n)
+    if s > MAX_16_BYTES:
+        s =  MAX_16_BYTES
+    if s < MIN_16_BITS:
+        s =  MIN_16_BITS
+    return s
+
 class AudioSourceMixer(ThreadSource):
     buf = None
 
@@ -72,7 +84,7 @@ class AudioSourceMixer(ThreadSource):
         #     for j in range(0, len(tracks_buffers)):
         #         self.buf[i] += tracks_buffers[j][i]
 
-        s  = map(sum, zip(*tracks_buffers))
+        s  = map(sum_16_bytes, zip(*tracks_buffers))
         self.buf = array('h', s)
 
 
