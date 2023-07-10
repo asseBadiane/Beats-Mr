@@ -4,7 +4,7 @@ from kivy.uix.button import Button
 
 class TrackStepButton(ToggleButton):
     pass
-
+     
 class TrackSoundButton(Button):
     pass
 
@@ -29,8 +29,16 @@ class TrackWidget(BoxLayout):
 
         # self.source_tracks = audio_engine.create_track(sound.samples, 120)
 
+
         for i in range(0, self.nb_steps):
+           
             self.button_step = TrackStepButton()
+            if int(i / 4) % 2 == 0:
+                self.button_step.background_normal = "images/step_normal1.png"
+            else:
+                self.button_step.background_normal = "images/step_normal2.png"
+            
+
             self.button_step.bind(state=self.on_step_button_state)
             self.button_steps.append(self.button_step)
             self.add_widget(self.button_step)
