@@ -12,6 +12,7 @@ MainWidget:
     play_indicator_widget: play_indicator_widget
     BoxLayout:
         orientation: "vertical"
+        # top layout
         BoxLayout:
             size_hint_y: None
             height: dp(50)
@@ -36,14 +37,24 @@ MainWidget:
                 width: dp(50)
                 on_press: root.bpm += 5
                
-            
-
-        PlayIndicatorWidget:
-            id: play_indicator_widget
-            size_hint_y: None
-            height: dp(10)
-            left_align: root.TRACK_STEP_LEFT_ALIGN
-            
-        BoxLayout:
-            orientation: "vertical"
-            id: tracks
+        # Bottom layout
+        RelativeLayout:
+            Image:
+                source: "images/background.jpg"
+                allow_stretch: True # tu peux changer ta taille
+                keep_ratio: False # tu peux te déformer
+            BoxLayout:
+                orientation: "vertical"
+                x: dp(16)
+                y: dp(16)
+                size_hint: None, None
+                size: (self.parent.width - dp(32), self.parent.height - dp(32))
+                PlayIndicatorWidget:
+                    id: play_indicator_widget
+                    size_hint_y: None
+                    height: dp(10)
+                    left_align: root.TRACK_STEP_LEFT_ALIGN
+                    
+                BoxLayout:
+                    orientation: "vertical"
+                    id: tracks
