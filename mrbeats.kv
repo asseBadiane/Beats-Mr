@@ -12,6 +12,31 @@ MainWidget:
     play_indicator_widget: play_indicator_widget
     BoxLayout:
         orientation: "vertical"
+
+        # top layout work 
+        RelativeLayout:
+            size_hint_y: None
+            height: dp(60)
+            
+            Button:
+                text: "A"
+                size_hint_x: None
+                width: dp(100)
+            BoxLayout:
+                pos_hint: {"center_x": .5}
+                size_hint_x: None
+                width: dp(120)
+                Button:
+                    text: "B1"
+                Button:
+                    text: "B2"
+            Button:
+                text: "C"
+                size_hint_x: None
+                width: dp(100)
+                pos_hint: {"right": 1}
+
+
         # top layout
         BoxLayout:
             size_hint_y: None
@@ -36,7 +61,7 @@ MainWidget:
                 size_hint_x: None
                 width: dp(50)
                 on_press: root.bpm += 5
-               
+                
         # Bottom layout
         RelativeLayout:
             Image:
