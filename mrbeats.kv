@@ -17,51 +17,58 @@ MainWidget:
         RelativeLayout:
             size_hint_y: None
             height: dp(60)
+            Image:
+                source: "images/top_background.png"
+                allow_stretch: True
+                keep_ratio: False
             
-            Button:
-                text: "A"
+            Image:
                 size_hint_x: None
-                width: dp(100)
+                width: dp(230)
+                source: "images/logo.png"
+                allow_stretch: True
+                
+                
             BoxLayout:
                 pos_hint: {"center_x": .5}
                 size_hint_x: None
-                width: dp(120)
-                Button:
-                    text: "B1"
-                Button:
-                    text: "B2"
-            Button:
-                text: "C"
-                size_hint_x: None
-                width: dp(100)
-                pos_hint: {"right": 1}
-
-
-        # top layout
-        BoxLayout:
-            size_hint_y: None
-            height: dp(50)
-            ControlButton:
-                text: "PLAY"
-                on_press: root.on_play_button_pressed()
-            ControlButton:
-                text: "STOP"
-                on_press: root.on_stop_button_pressed()
-            ControlButton:
-                text: "-"
-                size_hint_x: None
-                width: dp(50)
-                on_press: root.bpm -= 5
-            Label:
-                text: str(root.bpm)
-                size_hint_x: None
-                width: dp(80)
-            ControlButton:
-                text: "+"
-                size_hint_x: None
-                width: dp(50)
-                on_press: root.bpm += 5
+                width: dp(160)
+                ControlButton:
+                    background_normal: "images/play_button_normal.png"
+                    background_down: "images/play_button_down.png"
+                    on_press: root.on_play_button_pressed()
+                ControlButton:
+                    background_normal: "images/stop_button_normal.png"
+                    background_down: "images/stop_button_down.png"
+                    on_press: root.on_stop_button_pressed()
                 
+            BoxLayout:
+                size_hint_x: None
+                width: dp(180)
+                pos_hint: {"right": 1}
+                ControlButton:
+                    size_hint_x: None
+                    width: dp(45)
+                    on_press: root.bpm -= 5
+                    background_normal: "images/minus_button_normal.png"
+                    background_normal: "images/minus_button_down.png"
+                RelativeLayout:
+                    Image:
+                        source: "images/bpm_lcd_background.png"
+                        allow_stretch: True
+                        keep_ratio: False
+                    Label:
+                        text: str(root.bpm)
+                ControlButton:
+                    size_hint_x: None
+                    width: dp(45)
+                    on_press: root.bpm += 5
+                    background_normal: "images/plus_button_normal.png"
+                    background_normal: "images/plus_button_down.png"
+                Widget:
+                    size_hint_x: None
+                    width: dp(20)
+
         # Bottom layout
         RelativeLayout:
             Image:
