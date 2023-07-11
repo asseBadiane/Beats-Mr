@@ -3,6 +3,9 @@
 
 MainWidget:
 
+<VerticalSpacingWidget>:
+    size_hint_y: 0.01
+
 <ControlButton@Button>:
   
 
@@ -58,7 +61,19 @@ MainWidget:
                         allow_stretch: True
                         keep_ratio: False
                     Label:
-                        text: str(root.bpm)
+                        pos: -dp(4), dp(2)
+                        text: "888"
+                        font_name: "fonts/Lcd.ttf"
+                        font_size: dp(36)
+                        opacity: .1
+                        color: 0, 1, 1, 1
+                    Label:
+                    # Search: python numbers formating examples
+                        text: '{:0>3}'.format(str(root.bpm))
+                        pos: -dp(4), dp(2)
+                        font_name: "fonts/Lcd.ttf"
+                        font_size: dp(36)
+                        color: 0, 1, 1, 1
                 ControlButton:
                     size_hint_x: None
                     width: dp(45)

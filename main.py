@@ -1,8 +1,15 @@
+from kivy import Config
+Config.set('graphics', 'width', '800')
+Config.set('graphics', 'height', '360')
+Config.set('graphics', 'minimum_width', '650')
+Config.set('graphics', 'minimum_height', '300')
+
 from kivy.app import App
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.properties import ObjectProperty, NumericProperty, Clock
 from kivy.metrics import dp
 from kivy.lang import Builder
+from kivy.uix.widget import Widget
 
 
 from track import TrackWidget
@@ -17,6 +24,10 @@ MIN_BPM = 80
 MAX_BPM = 160
 
 #NB_TRACKS = 4
+
+class VerticalSpacingWidget(Widget):
+    pass
+
 class MainWidget(RelativeLayout):
     tracks_layout = ObjectProperty()
     play_indicator_widget = ObjectProperty()
@@ -43,8 +54,9 @@ class MainWidget(RelativeLayout):
         # self.play_indicator_widget.current_step_index(5)
         for i in range(0, self.sound_kit_service.get_nb_tracks()):
             sound = self.sound_kit_service.get_sound_index(i)
+            self.tracks_layout.add_widget(VerticalSpacingWidget())
             self.tracks_layout.add_widget(TrackWidget(sound, self.audio_engine, NB_STEPS_TRACKS, self.audio_mixer.tracks[i], self.TRACK_STEP_LEFT_ALIGN))
-        
+        self.tracks_layout.add_widget(VerticalSpacingWidget())
 
     def on_mixer_current_step_changed(self, step_index):
         # print(f"on_mixer_current_step_changed {step_index}")
