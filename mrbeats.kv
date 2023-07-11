@@ -102,6 +102,10 @@ MainWidget:
                     height: dp(10)
                     left_align: root.TRACK_STEP_LEFT_ALIGN
                     
-                BoxLayout:
-                    orientation: "vertical"
-                    id: tracks
+                ScrollView:
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    BoxLayout:
+                        size_hint_min_y: dp(75) * root.nb_tracks
+                        orientation: "vertical"
+                        id: tracks

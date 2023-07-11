@@ -34,6 +34,7 @@ class MainWidget(RelativeLayout):
     TRACK_STEP_LEFT_ALIGN = NumericProperty(dp(120))
     step_index = 0
     bpm = NumericProperty(120)
+    nb_tracks = NumericProperty(0)
 
 
     def __init__(self, **kwargs):
@@ -42,6 +43,7 @@ class MainWidget(RelativeLayout):
 
         # kik_sound = self.sound_kit_service.get_sound_index(0)
 
+        self.nb_tracks = self.sound_kit_service.get_nb_tracks()
         self.audio_engine = AudioEngine()
         # self.audio_engine.play_sound(kik_sound.samples)
 
